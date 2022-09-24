@@ -36,13 +36,11 @@ let pizza = {
     name:"Hawaiian Pizza",
     price: 24.00,
     category: "entree",
-    popularity: 9000,
+    popularity: 10,
     rating: 8,
-    tags: {
-        glutenFree: false,
-        kids: true
-    }
-}
+    tags: ['familySize', 'thickCrust','sweet']
+};
+
 
 //////////////////PROBLEM 2////////////////////
 /* 
@@ -54,7 +52,7 @@ let pizza = {
 
 //CODE HERE
 
-console.log(pizza.popularity)
+console.log(pizza.popularity);
 
 /*
     Second, log the second tag in your pizza's
@@ -114,64 +112,48 @@ let foodArr = [
         name:"Hawaiian Pizza",
         price: 24.00,
         category: "entree",
-        popularity: 9000,
-        rating: 8,
-        tags: {
-            glutenFree: false,
-            kids: true
-        }
+        popularity: 9,
+        rating: 8.9,
+        tags: ['familySize', 'thickCrust', 'sweet']
     },
     {
         
-        name:"Hot Dog",
+        name:"Hot Dog Pizza",
         price: 2.00,
         category: "entree",
-        popularity: 5000,
-        rating: 9,
-        tags: {
-            glutenFree: false,
-            kids: true
-        }
+        popularity: 5,
+        rating: 4,
+        tags: ['kids', 'savory']
     },
     {
         
-        name:"chili cheese fries",
+        name:"Artichoke Pizza",
         price: 5.00,
         category: "apetizer",
-        popularity: 6000,
-        rating: 5,
-        tags: {
-            glutenFree: true,
-            kids: true
-        }
+        popularity: 5,
+        rating: 5.5,
+        tags: ['glutenFree', 'thinCrust', 'savory']
     },
     {
         
         name:"Pizza Sticks",
         price: 10.00,
         category: "apetizer",
-        popularity: 10000,
+        popularity: 10,
         rating: 10,
-        tags: {
-            glutenFree: true,
-            kids: false
-        }
+        tags: ['kids', 'savory']
     },
     {
         
-        name:"Spotted Dick",
-        price: 100.00,
+        name:"Anchovy",
+        price: 20.00,
         category: "entree",
-        popularity: 1000,
-        rating: 1,
-        tags: {
-            glutenFree: false,
-            kids: false
-        }
+        popularity: 1,
+        rating: 1.5,
+        tags:['glutenFree', 'thinCrust', 'exotic']
     }
     
 ]
-
 //////////////////PROBLEM 4////////////////////
 /* 
     Let's filter the food objects according
@@ -185,11 +167,15 @@ let foodArr = [
 */
 
 //CODE HERE
+//
+// const filteredFood = foodArr.filter((e,i,tag) => tag[i].tags['savory'])
+// console.log(filteredFood)
 
-const filteredFood = foodArr.filter((tag)=> tag.tags.kids === true)
-console.log(filteredFood)
+let filteredFood = foodArr.filter(function(tag){
+    return tag.tags.includes('glutenFree');
+});
 
-
+console.log(filteredFood);
 
 //////////////////PROBLEM 5////////////////////
 /* 
@@ -231,14 +217,14 @@ console.log(filteredFood)
 */
 
 //CODE HERE
-//                      popularity, number to compare against, isAbove, or isBelow
-let filterByProperty = (property, number, type) => {
-    let popularity = foodArr.popularity
-    let ratings = foodArr.rating
-    let price = foodArr.price
-    const filteredFood = foodArr.filter((tag)=> property > number)
-
-console.log(filteredFood) 
+const filterByProperty = (property, number, type) => {
+    let filteredFood = [];
+    if (type === "above"){
+        filteredArray = foodArr.filter ( (pizzaObj) => pizzaObj[property] > number)
+    } else {
+        filteredArray = foodArr.filter ( (pizzaObj) => pizzaObj[property] < number)
+    }
+    return filteredArray
 }
 
 /*
@@ -249,3 +235,4 @@ console.log(filteredFood)
 */
 
 //CODE HERE
+console.log(filterByProperty("rating", 5, "above"))
