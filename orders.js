@@ -29,9 +29,20 @@
     stored on the object.
 */
 
-//CODE HERE
+//CODE HERE I am trying to create a method, inside a class called ticket, but when i create a new ticket, the ticket showes up, but the method only shows as a function that wasn't triggered. so the question is, how do I trigger the method?
 
-
+class Ticket {
+    constructor (items, orderTime, customerID){
+        this.items = items;
+        this.orderTime = orderTime;
+        this.customerID = customerID;
+        this.status = `queued`;
+    }
+    updateStatus (newStatus) {
+        this.status = newStatus
+        return console.log(`The order for customer ${this.customerID} is now ${this.status}.`);
+    }
+}
 
 /*
     Create a new instance of your class.
@@ -46,6 +57,9 @@
 
 //CODE HERE
 
+let firstTicket = new Ticket('Pizza', '5:00pm', 66);
+console.log(firstTicket);
+
 
 /*
     Call the `updateStatus` method on
@@ -54,3 +68,5 @@
 */
 
 //CODE HERE
+
+firstTicket.updateStatus('cooking')

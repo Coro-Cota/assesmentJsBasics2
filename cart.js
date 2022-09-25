@@ -35,7 +35,11 @@ const cart = [
 
 //CODE HERE
 
-// const summedPrice = cart.reduce(/* CALLBACK HERE */)
+const summedPrice = cart.reduce((x,y) => {
+    return x + y.price
+},0);
+
+console.log(summedPrice);
 
 
 //////////////////PROBLEM 2////////////////////
@@ -54,6 +58,14 @@ const cart = [
 */
 
 //CODE HERE
+
+let calcFinalPrice = (cartTotal, couponValue, tax) => {
+    let totalWTaxes = (cartTotal * (tax + 1));
+    let discount = (totalWTaxes * couponValue);
+    let finalPrice = (totalWTaxes - discount);
+        return finalPrice
+}
+console.log(calcFinalPrice(26.97, 0.1, .06));
 
 
 
@@ -79,7 +91,18 @@ const cart = [
 
 /*
     TEXT ANSWER HERE
-
+    For a restaurant to take an online order, they will need a full name, a phone number, an email, an address and their cc information.
+    firstname = 'string'
+    lastname = 'string
+    phoneNumber = number (I would make this a number since phone numbers are already numbers and that way a string cannot be placed in its stead, it would require a usable phone number)
+    email = 'string' (for contact info)
+    address = 'string' (I want to include an address incase of delivery)
+    cc info = this will be another object, a credit card is needed in order to take payments
+        ccName = 'string' (incase its different from customer name)
+        ccNumber = number (the actual credit card number)
+        expDate = number (experation date)
+        cvc = number (cvc)
+        ccAddress = 'string' (incase the delivery address is different than the cc address I need a space for that)
 */
 
 /*
@@ -88,3 +111,28 @@ const cart = [
 */
 
 //CODE HERE
+
+let customerObject = {
+    firstName: 'George',
+    lastName: 'Costanza',
+    phoneNumber: 5555555555,
+    email: 'believe_it_or_not@gmail.com',
+    custAddress: {
+        address:'1344 Queens Boulevard',
+        city: 'New York',
+        state: 'NY',
+        zipcode: 11105,
+    },
+    ccInfo: {
+        ccName: 'Jerry Seinfeld',
+        ccNumber:1234567890123456,
+        expDate: 1021,
+        cvc: 123,
+        ccAddress: {
+            address:'129 West 81st Street, apt 5A',
+            city: 'New York',
+            state: 'NY',
+            zipcode: 11105,
+        },
+    }
+}
